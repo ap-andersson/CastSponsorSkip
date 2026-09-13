@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.26.1-alpine AS go-builder
+FROM --platform=$BUILDPLATFORM golang:1.26.8-alpine3.24 AS go-builder
 WORKDIR /app
 
 COPY go.mod go.sum ./
@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.cache \
   go build -ldflags="-w -s" -trimpath -tags grpcnotrace
 
 
-FROM alpine:3.23.3
+FROM alpine:3.24.1
 WORKDIR /app
 
 RUN apk add --no-cache tzdata
