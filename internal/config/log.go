@@ -56,7 +56,7 @@ func InitLog(w io.Writer, level slog.Level, format LogFormat) {
 		}
 
 		slog.SetDefault(slog.New(
-			tint.NewHandler(w, &tint.Options{
+			tint.NewTextHandler(w, &tint.Options{
 				Level:      level,
 				TimeFormat: time.DateTime,
 				NoColor:    !color,
